@@ -1,0 +1,32 @@
+spring:
+  #数据库连接
+  datasource:
+    url: jdbc:mysql://localhost:3306/bootteachsystem?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: root
+  #es搜索引擎
+  elasticsearch:
+    rest:
+      uris: http://192.168.219.137:9200
+  #开启bean重复定义重写
+  main:
+    allow-bean-definition-overriding: true
+  #rabbitmq
+  rabbitmq:
+    host: 192.168.219.137
+    port: 5672
+    publisherReturns: true
+    publisher-confirm-type: correlated
+  #redis配置
+  redis:
+    host: 192.168.219.137
+    port: 6379
+    #username: root
+    #password: root
+#文件统一存储minio
+minio:
+  accessHost: http://192.168.219.137:9000
+  bucket: bootteach
+  accessKey: admin
+  secretKey: admin123456

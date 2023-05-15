@@ -24,9 +24,20 @@ spring:
     port: 6379
     #username: root
     #password: root
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  #开启日志
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 #文件统一存储minio
 minio:
   accessHost: http://192.168.219.137:9000
   bucket: bootteach
   accessKey: admin
   secretKey: admin123456
+JWT:
+  secretKey: $QWERTYUIOP!AAZXCVBNMDGJJKKLNNV<?
+  #jwt 令牌有效期 单位毫秒
+  ttlMillis: 360000
+  #jwt 令牌有效天数
+  expDay: 1

@@ -15,6 +15,7 @@
         <module>teach_model</module>
         <module>teach_web</module>
         <module>teach_service</module>
+        <module>teach_dto</module>
     </modules>
     <properties>
         <project.encoding>UTF-8</project.encoding>
@@ -26,7 +27,7 @@
         <spring-boot.version>2.4.2</spring-boot.version>
         <!-- 次要依赖 -->
         <hutool-version>5.5.8</hutool-version>
-        <mybatis-spring-boot-starter.version>2.1.4</mybatis-spring-boot-starter.version>
+        <mybatis-spring-boot-starter.version>3.5.2</mybatis-spring-boot-starter.version>
         <pagehelper-spring-boot-starter.version>1.3.0</pagehelper-spring-boot-starter.version>
         <jsoup.version>1.13.1</jsoup.version>
         <orika.version>1.5.4</orika.version>
@@ -39,6 +40,7 @@
         <weixin.version>4.0.0</weixin.version>
         <spring-javaformat.version>0.0.22</spring-javaformat.version>
         <lombok.version>1.18.20</lombok.version>
+        <redis.version>2.7.0</redis.version>
     </properties>
 
     <dependencyManagement>
@@ -75,6 +77,11 @@
                 <version>${spring-boot.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>2.6.4</version>
+            </dependency>
+            <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-crypto</artifactId>
                 <version>${hutool-version}</version>
@@ -90,8 +97,8 @@
                 <version>${hutool-version}</version>
             </dependency>
             <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-spring-boot-starter.version}</version>
             </dependency>
             <dependency>
@@ -164,6 +171,30 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-amqp</artifactId>
                 <version>2.7.4</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${redis.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.22</version>
+            </dependency>
+            <!-- jwt 依赖 -->
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>3.10.3</version>
+            </dependency>
+            <!-- fastjson -->
+            <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.83</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

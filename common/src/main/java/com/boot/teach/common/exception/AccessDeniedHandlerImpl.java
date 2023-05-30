@@ -19,6 +19,6 @@ import java.io.IOException;
 public class AccessDeniedHandlerImpl implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException, ServletException {
-        WebUtils.rednerString((jakarta.servlet.http.HttpServletResponse) httpServletResponse, JSONUtil.toJsonStr(AuthExceptionUtil.getErrMsgByExceptionType(e)));
+        WebUtils.rednerString( httpServletResponse, JSONUtil.toJsonStr(AuthExceptionUtil.getErrMsgByExceptionType(e)));
     }
 }

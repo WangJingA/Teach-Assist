@@ -1,45 +1,43 @@
 package com.boot.teach.common.util;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTCreator;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.interfaces.DecodedJWT;
+
+import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
-
-import java.util.Calendar;
-import java.util.Map;
+import java.util.Date;
 
 
+/**
+ * jwt工具类
+ * @author : hzx
+ * @date : 2023/5/15
+ */
 public class JWTUtils {
-    @Value("${JWT.secretKey}")
-    static String secretKey;
 
-    @Value("${JWT.ttlMillis}")
-    static int expireMillis;
+    static String secretKey = "$QWERTYUIOP!AAZXCVBNMDGJJKKLNNV<?";
 
-    /**
-     * token生成
-     * @param map
-     * @return
-     */
-    public static String getToken(Map<String,String> map){
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.SECOND, expireMillis);
-        JWTCreator.Builder builder = JWT.create();
-        map.forEach((k,v)->{
-           builder.withClaim(k,v);
-        });
-        String token = builder.withExpiresAt(calendar.getTime()).sign(Algorithm.HMAC256(secretKey));
-        return token;
+
+    static int expireMillis = 360000;
+
+
+
+    public static String getToken(Long id,String username) {
+        return Jwts.builder()
+                .setId(id.toString())
+                .setSubject(username)
+                .setExpiration(new Date(System.currentTimeMillis()+expireMillis))
+                .signWith(SignatureAlgorithm.HS256,secretKey)
+                .compact();
+    }
+    public static String getToken(String id,String username) {
+        return Jwts.builder()
+                .setId(id)
+                .setSubject(username)
+                .setExpiration(new Date(System.currentTimeMillis()+expireMillis))
+                .signWith(SignatureAlgorithm.HS256,secretKey)
+                .compact();
     }
 
-    /**
-     * 检验token
-     * @param token
-     * @return
-     */
-    public static DecodedJWT verify(String token){
-        DecodedJWT verify = JWT.require(Algorithm.HMAC256(secretKey)).build().verify(token);
-        return verify;
+    public static Claims parserToken(String token) throws ExpiredJwtException {
+        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
     }
 }

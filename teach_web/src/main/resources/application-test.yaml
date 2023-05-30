@@ -1,0 +1,54 @@
+server:
+  port: 9999
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  #数据库连接
+  datasource:
+    url: jdbc:mysql://localhost:3306/bootteachsystem?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: root
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+  #es搜索引擎
+  elasticsearch:
+    rest:
+      uris: http://192.168.219.137:9200
+  #开启bean重复定义重写
+  main:
+    allow-bean-definition-overriding: false
+  #rabbitmq
+  rabbitmq:
+    host: 192.168.219.137
+    port: 5672
+    publisherReturns: true
+    publisher-confirm-type: correlated
+  #redis配置
+  redis:
+    host: 192.168.219.137
+    port: 6379
+
+#文件统一存储minio
+minio:
+  accessHost: http://192.168.219.137:9000
+  bucket: bootteach
+  accessKey: admin
+  secretKey: admin123456
+JWT:
+  secretKey: $QWERTYUIOP!AAZXCVBNMDGJJKKLNNV<?
+  #jwt 令牌有效期 单位毫秒
+  ttlMillis: 360000
+  #jwt 令牌有效天数
+  expDay: 1
+es:
+  serverHost: http://192.168.219.137:9200
+
+#mybatis
+mybatis-plus:
+  global-config:
+    banner: off
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

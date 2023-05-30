@@ -6,5 +6,5 @@ import com.boot.teach.model.auth.TeachUserRole;
 import java.util.List;
 
 public interface RoleService extends IService<TeachUserRole>  {
-    public List<String> selectRoleByUserId(String userId);
+     List<String> selectRoleByUserId(String userId);
 }

@@ -70,7 +70,13 @@ public class ServerResponseEntity<T> implements Serializable {
 		serverResponseEntity.setCode(ResponseEnum.OK.value());
 		return serverResponseEntity;
 	}
-
+	public static <T> ServerResponseEntity<T> success(String code,String msg,T data){
+		ServerResponseEntity<T> serverResponseEntity = new ServerResponseEntity<>();
+		serverResponseEntity.setCode(code);
+		serverResponseEntity.setMsg(msg);
+		serverResponseEntity.setData(data);
+		return serverResponseEntity;
+	}
 	public static <T> ServerResponseEntity<T> success() {
 		ServerResponseEntity<T> serverResponseEntity = new ServerResponseEntity<>();
 		serverResponseEntity.setCode(ResponseEnum.OK.value());

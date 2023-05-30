@@ -1,7 +1,7 @@
 package com.boot.teach.service.auth.Impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.boot.teach.dao.mapper.auth.RoleMapper;
+import com.boot.teach.dao.auth.RoleMapper;
 import com.boot.teach.model.auth.TeachUserRole;
 import com.boot.teach.service.auth.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,7 @@
 package com.boot.teach.common.util;
 
-import jakarta.servlet.http.HttpServletResponse;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * web响应封装

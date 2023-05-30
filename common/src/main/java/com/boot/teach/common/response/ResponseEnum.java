@@ -1,6 +1,6 @@
 package com.boot.teach.common.response;
 
-import io.minio.errors.InsufficientDataException;
+
 
 /**
  * @author hzx

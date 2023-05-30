@@ -42,9 +42,6 @@ public class AuthExceptionUtil {
         }else if (e instanceof AccessDeniedException) {
             return ServerResponseEntity.fail(ResponseEnum.ACCESS_DENIED_EXCEPTION);
         }
-
         return ServerResponseEntity.fail(ResponseEnum.EXCEPTION);
     }
-
-
 }
